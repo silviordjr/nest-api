@@ -1,0 +1,13 @@
+NestJS Passos
+
+nest new <nome da pasta> (apos instalar nest-cli globalmente)
+nest g resource <type> (cria crud para o tipo)
+npm install --save @nestjs/typeorm typeorm mysql2 (conexão com db) => https://docs.nestjs.com/techniques/database
+npm i @nest/config (configuração para .env)
+>>configurar app.module.ts para acesso a db
+>>criar script para typeorm: "typeorm": "ts-node ./node_modules/typeorm/cli.js"
+>>configurar ormconfig.ts
+npm run typeorm migration:create ./src/migrations/crate-<type>-table (cria os arquivos de migration)
+>>editar arquivos de migração e entidades
+>> criar script "migration:up": "ts-node ./node_modules/typeorm/cli.js migration:run -d ormconfig.ts"
+>> imports: [TypeOrmModule.forFeature([User])] no moduklo de cada resource
